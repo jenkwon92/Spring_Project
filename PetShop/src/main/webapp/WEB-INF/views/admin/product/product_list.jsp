@@ -31,7 +31,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
 
 //글쓰기 폼 요청하기
@@ -72,7 +72,7 @@ $(function(){
 				<%Product product = (Product)productList.get(curPos++); %>
 				<tr>
 					<td><a href="/admin/product/detail?product_id=<%=product.getProduct_id()%>"><%=num--%></td>
-					<td><img src="/resources/data/<%=product.getProduct_id()%>.<%=product.getFilename()%>" width="50px"></td>
+					<td><img src="/resources/data/addon/<%=product.getProduct_id()%>.<%=product.getFilename()%>" width="50px"></td>
 					<td><%=product.getSubCategory().getSubcategory_id() %></td>
 					<td><%=product.getProduct_name() %></td>
 					<td><%=product.getPrice() %></td>

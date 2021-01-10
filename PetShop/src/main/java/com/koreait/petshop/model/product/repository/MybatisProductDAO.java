@@ -39,8 +39,8 @@ public class MybatisProductDAO implements ProductDAO{
 	}
 
 	@Override
-	public void insert(Product product) {
-		// TODO Auto-generated method stub
+	public void regist(Product product) {
+		sqlSessionTemplate.insert("Product.insert", product);
 		
 	}
 

@@ -22,7 +22,7 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	}
 
 	@Override
-	public List selectById(int topcategory_id) {
+	public List selectAllById(int topcategory_id) {
 		
 		return subCategoryDAO.selectById(topcategory_id);
 	}

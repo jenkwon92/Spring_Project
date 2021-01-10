@@ -23,7 +23,7 @@ public class MybatisSubCategoryDAO implements SubCategoryDAO{
 	@Override
 	public List selectById(int topcategory_id) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("SubCategory.selectById", topcategory_id);
+		return sqlSessionTemplate.selectList("SubCategory.selectAllById", topcategory_id);
 	}
 
 	@Override
