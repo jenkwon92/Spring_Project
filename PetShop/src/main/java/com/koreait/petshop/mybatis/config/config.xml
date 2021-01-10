@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.koreait.petshop.model.domain.TopCategory" 	alias="TopCategory"/>		
+		<typeAlias type="com.koreait.petshop.model.domain.SubCategory" 	alias="SubCategory"/>		
+		<typeAlias type="com.koreait.petshop.model.domain.Product" 			alias="Product"/>		
+	
+			
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/TopCategoryMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/SubCategoryMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/ProductMapper.xml"/>
+
+		
+		</mappers>
+	
+</configuration>
