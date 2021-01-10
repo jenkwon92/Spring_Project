@@ -2,6 +2,8 @@ package com.koreait.petshop.controller.product;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.koreait.petshop.model.common.FileManager;
 import com.koreait.petshop.model.domain.Product;
 import com.koreait.petshop.model.domain.SubCategory;
 import com.koreait.petshop.model.product.service.ProductService;
@@ -31,6 +34,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+
 	//목록 폼
 	//등록된 상품목록 리스트
 	//@GetMapping("/admin/product/list")
