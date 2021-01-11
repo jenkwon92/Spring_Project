@@ -1,5 +1,5 @@
-<%@page import="com.koreait.petshop.model.domain.TopCategory"%>
-<%@page import="com.koreait.petshop.model.domain.Product"%>
+<%@page import="com.koreait.petshop2.model.domain.TopCategory"%>
+<%@page import="com.koreait.petshop2.model.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
@@ -64,7 +64,7 @@ input[type=submit]:hover {
 			<p>
 				<form enctype="multipart/form-data">
 				
-					<%-- <input type="hidden" name="product_id" value="<%=product.getProduct_id()%>">
+					<input type="hidden" name="product_id" value="<%=product.getProduct_id()%>">
 					<select name="country">
 						<option value="<%=product.getSubCategory().getTopcategory_id()%>"></option>
 					</select>
@@ -75,7 +75,7 @@ input[type=submit]:hover {
 					<input type="text" name="product_name"  value="<%=product.getProduct_name()%>"> 
 					<input type="text"  name="price" value="<%=product.getPrice()%>">  
 					 <p>상품이미지: <input type="file" name="repImg"></p>
-					<textarea id="subject" name="detail" style="height: 200px"><%=product.getDetail()%></textarea> --%>
+					<textarea id="subject" name="detail" style="height: 200px"><%=product.getDetail()%></textarea>
 					<input type="button" value="수정하기">
 					<input type="button" value="삭제하기">
 					<input type="button" value="목록보기" onClick="location.href='/admin/product/list'">

@@ -29,7 +29,7 @@
 		<bean id="sqlSessionFactoryBean" 
 		class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:configLocation="classpath:com/koreait/petshop/mybatis/config/config.xml"/>
+		p:configLocation="classpath:com/koreait/petshop2/mybatis/config/config.xml"/>
 		
 
 	
@@ -39,7 +39,7 @@
 	</bean>	
 	
 	
-	<context:component-scan base-package="com.koreait.petshop.model"><!-- FileManager올리기 위해 모두 구해오기 -->
+	<context:component-scan base-package="com.koreait.petshop2.model"><!-- FileManager올리기 위해 모두 구해오기 -->
 		<!-- Controller제외하고 -->
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
