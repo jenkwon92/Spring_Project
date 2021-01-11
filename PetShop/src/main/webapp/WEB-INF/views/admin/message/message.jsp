@@ -1,4 +1,4 @@
-<%@page import="com.koreait.petshop2.model.common.MessageData"%>
+<%@page import="com.koreait.petshop.model.common.MessageData"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
 	

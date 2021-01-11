@@ -1,7 +1,7 @@
-<%@page import="com.koreait.petshop2.model.domain.Cart"%>
-<%@page import="com.koreait.petshop2.model.common.Formatter"%>
-<%@page import="com.koreait.petshop2.model.common.Formatter"%>
-<%@page import="com.koreait.petshop2.model.domain.Cart"%>
+<%@page import="com.koreait.petshop.model.domain.Cart"%>
+<%@page import="com.koreait.petshop.model.common.Formatter"%>
+<%@page import="com.koreait.petshop.model.common.Formatter"%>
+<%@page import="com.koreait.petshop.model.domain.Cart"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%

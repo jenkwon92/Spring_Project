@@ -1,9 +1,10 @@
-<%@page import="com.koreait.petshop2.model.domain.Color"%>
-<%@page import="com.koreait.petshop2.model.domain.TopCategory"%>
-<%@page import="com.koreait.petshop2.model.domain.Psize"%>
+<%@page import="com.koreait.petshop.model.domain.Image"%>
+<%@page import="com.koreait.petshop.model.domain.Color"%>
+<%@page import="com.koreait.petshop.model.domain.TopCategory"%>
+<%@page import="com.koreait.petshop.model.domain.Psize"%>
 <%@page import="com.fasterxml.jackson.core.format.DataFormatMatcher"%>
-<%@page import="com.koreait.petshop2.model.common.Formatter"%>
-<%@page import="com.koreait.petshop2.model.domain.Product"%>
+<%@page import="com.koreait.petshop.model.common.Formatter"%>
+<%@page import="com.koreait.petshop.model.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
@@ -35,11 +36,15 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product__details__pic">
+                        <%for(int i=0;i<product.getImageList().size();i++){ %>
                         <div class="product__details__pic__left product__thumb nice-scroll">
+                                	<%Image image = product.getImageList().get(i); %>   
+                                	<%if(i>=4)break; //총 4개까지만 허용할 것이므로..%>   
                             <a class="pt active" href="#product-1">
-                                <img src="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>">
+                                <img src="/resources/data/addon/<%=image.getImage_id() %>.<%=image.getFilename()%>">
                           </a>
                         </div>
+                          <%} %>
                         <div class="product__details__slider__content">
                             <div class="product__details__pic__slider owl-carousel">
                                 <img data-hash="product-1" class="product__big__img" src="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>">
@@ -77,7 +82,7 @@
                                 <li>
                                     <span>Available color:</span>
                                     <div class="color__checkbox">
-                                      <%for(int i=0; i<product.getPsize().size();i++){ %>
+                                      <%for(int i=0; i<product.getColor().size();i++){ %>
 	                                    <%Color color = product.getColor().get(i); %>
                                             <input type="radio" name="color__radio" ><%=color.getPicker() %>
                                     <%} %>

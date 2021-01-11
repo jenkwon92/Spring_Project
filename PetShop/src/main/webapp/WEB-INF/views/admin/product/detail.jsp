@@ -1,5 +1,5 @@
-<%@page import="com.koreait.petshop2.model.domain.TopCategory"%>
-<%@page import="com.koreait.petshop2.model.domain.Product"%>
+<%@page import="com.koreait.petshop.model.domain.TopCategory"%>
+<%@page import="com.koreait.petshop.model.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%

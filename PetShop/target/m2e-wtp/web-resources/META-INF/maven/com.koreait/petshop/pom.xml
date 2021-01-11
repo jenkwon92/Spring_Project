@@ -14,7 +14,7 @@
 		<org.slf4j-version>1.7.30</org.slf4j-version>
 	</properties>
 	<dependencies>
-		<!-- Spring -->
+			<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -164,6 +164,15 @@
 		    <version>1.5.0-b01</version>
 		</dependency>
 				
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+		root-context.xml에서 설정한 AOP를 사용하기 위해서 -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.8.14</version>
+		    <scope>runtime</scope>
+		</dependency>
+						
 	
 		<!-- Test -->
 		<dependency>

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.koreait.petshop2">
+	<logger name="com.koreait.petshop">
 		<level value="debug" />
 	</logger>
 	
