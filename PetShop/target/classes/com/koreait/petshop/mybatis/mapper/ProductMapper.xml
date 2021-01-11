@@ -72,6 +72,6 @@
 	<select id="selectBySubCategoryId" parameterType="int" resultType="product">
 		select * from product where subcategory_id =#{subcategory_id}
 	</select>
-	
+
 
 </mapper>

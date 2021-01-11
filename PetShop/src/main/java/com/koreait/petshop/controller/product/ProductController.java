@@ -101,16 +101,15 @@ public class ProductController {
 		
 		//상위에 소속된 모든 하위 보여주기
 		@RequestMapping(value="/shop/product/listAll", method=RequestMethod.GET)
-		public ModelAndView getShopTopProductList(int topcategory_id) {
-			List topList = topCategoryService.selectAll();//상품 카테고리 가져오기
-			List subList = subCategoryService.selectAllById(topcategory_id);
+		public ModelAndView getProductAll() {
 			
+			List productList = productService.selectAll();
 			ModelAndView mav = new ModelAndView();
-			mav.addObject("topList", topList);
-			mav.addObject("subList", subList);
+			mav.addObject("productList",productList);
+		
 			mav.setViewName("shop/product/listAll");
 			
-			logger.debug("subList.size() "+subList.size());
+			
 			return mav;
 		}
 		

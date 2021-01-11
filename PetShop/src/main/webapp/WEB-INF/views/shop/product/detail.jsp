@@ -21,6 +21,9 @@
 </style>	
 <script>
  $('input[name="psize"]').val();
+ 
+//비동기로 장바구니에 담기
+
 
 </script>
 </head>
@@ -32,7 +35,7 @@
 	    <!-- Product Details Section Begin -->
 	   <%--  <input type="hidden" name="product_id" value="<%=product.getProduct_id()%>"> --%>
     <section class="product-details spad">
-        <div class="container">
+        <div class="container" id="cart_form">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product__details__pic">
@@ -73,7 +76,7 @@
                                     <input type="text" value="1">
                                 </div>
                             </div>
-                            <a href="/shop/cart/cartlist" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="/shop/cart/list" class="cart-btn"><span class="icon_bag_alt" onClick="addCart()"></span> Add to cart</a>
                           
                         </div>
                         <div class="product__details__widget">

@@ -1,9 +1,12 @@
+<%@page import="com.koreait.petshop.model.common.Pager"%>
 <%@page import="com.koreait.petshop.model.common.Formatter"%>
 <%@page import="com.koreait.petshop.model.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
 	List<Product> productList  = (List)request.getAttribute("productList");
+	Pager pager = new Pager();
+	pager.init(request,productList);
 %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +24,7 @@
 
 	<%@ include file="./../../inc/shop_navi.jsp"%>
 
-	<!--상품 시작 -->
+	<!--상품 리스트 시작 -->
 	<section class="shop spad">
 		<div class="container">
 			<div class="row">
@@ -41,8 +44,8 @@
 										</span>
 										</a>
 										</li>
-										<li><a href="/shop/cart/cart_list"><span class="icon_bag_alt"></span></a></li>
-										<li><a href="/shop/product/detail?product_id=<%=product.getProduct_id()%>"><span class="icon_bag_alt"></span></a></li>
+										<li><a href="/shop/cart/list"><span class="icon_bag_alt"></span></a></li>
+										
 									</ul>
 								</div>
 								<div class="product__item__text">
@@ -55,6 +58,7 @@
 											class="fa fa-star"></i>
 									</div>
 									<div class="product__price"><%=Formatter.getCurrency(product.getPrice()) %></div>
+									<li><a href="/shop/product/detail?product_id=<%=product.getProduct_id()%>">상품 상세보기</a></li>
 								</div>
 							</div>
 						</div>
@@ -63,13 +67,25 @@
 				</div>
 			</div>
 
-			<!-- 상품  끝-->
+			<!-- 상품 리스트 끝-->
 			
 			<div class="col-lg-12 text-center">
 				<div class="pagination__option">
-					<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"><i
-						class="fa fa-angle-right"></i></a>
 				</div>
+				<%if((pager.getFirstPage()-1)>=1){ %>
+				<a href = "/shop/product/list?currentPage=<%=pager.getFirstPage()-1%>">◀</a>
+				<%}else{ %>
+					<a href ="javascript:alert('처음 페이지입니다.')">◀</a>
+				<%} %>
+				<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
+					<%if(i>pager.getTotalPage())break; %>
+					<a href ="/shop/product/list?currentPage=<%=i%>" <% if(pager.getCurrentPage()==i){%>class="pageNum"<%} %>>[<%=i %>]</a>
+				<%} %>
+				<%if((pager.getLastPage()+1)<pager.getTotalPage()){ %>
+					<a href = "/shop/product/list?currentPage=<%=pager.getFirstPage()-1%>">▶</a>
+				<%}else{ %>	
+					<a href ="javascript:alert('마지막 페이지입니다.')">▶</a>
+				<%} %>
 			</div>
 			
 		</div>
