@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.Session;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -42,37 +43,38 @@ public class PaymentController {
       
       //카트 요청 
       @RequestMapping(value="/shop/cart/list", method=RequestMethod.GET )
-      public ModelAndView cart() {
+      public ModelAndView cart(HttpServletRequest request) {
+    	  HttpSession session = request.getSession();
+    	  Member member = (Member)session.getAttribute("member");
+    	  List topList = topCategoryService.selectAll();
+    	  List cartList = paymentService.selectCartList(member.getMember_id());
+    	  
          ModelAndView mav = new ModelAndView();
-         List cartList = paymentService.selectCartList();
-         logger.debug("cartlist is "+cartList);
+         mav.addObject("topList", topList);
          mav.addObject("cartList", cartList);
          mav.setViewName("shop/cart/cart_list");
          return mav;
       }
       
       //장바구니에 상품 담기 요청 
-      @RequestMapping(value="/shop/cart/regist", method=RequestMethod.POST)
-      @ResponseBody
-      public MessageData registCart(Cart cart, HttpSession session) {
-         if(session.getAttribute("member")==null) {
-            throw new LoginRequiredException("로그인이 필요한 서비스입니다.");
-         }
-         
-         Member member = (Member)session.getAttribute("member");
-         
-         logger.debug("product_id "+cart.getProduct_id());
-         logger.debug("quantity "+cart.getQuantity());
-         cart.setMember_id(member.getMember_id());
-         paymentService.insert(cart);
-         
-         MessageData messageData = new MessageData();
-         messageData.setResultCode(1);
-         messageData.setMsg("장바구니에 상품이 담겼습니다");
-         messageData.setUrl("/shop/cart/list");
-         
-         return messageData;
-      }
+		/*
+		 * @RequestMapping(value="/shop/cart/regist", method=RequestMethod.POST)
+		 * 
+		 * @ResponseBody public MessageData registCart(Cart cart, HttpSession session) {
+		 * if(session.getAttribute("member")==null) { throw new
+		 * LoginRequiredException("로그인이 필요한 서비스입니다."); }
+		 * 
+		 * Member member = (Member)session.getAttribute("member");
+		 * 
+		 * logger.debug("product_id "+cart.getProduct_id());
+		 * logger.debug("quantity "+cart.getQuantity());
+		 * cart.setMember_id(member.getMember_id()); paymentService.insert(cart);
+		 * 
+		 * MessageData messageData = new MessageData(); messageData.setResultCode(1);
+		 * messageData.setMsg("장바구니에 상품이 담겼습니다"); messageData.setUrl("/shop/cart/list");
+		 * 
+		 * return messageData; }
+		 */
       
       //장바구니 비우기 
       @RequestMapping(value="/shop/cart/del", method=RequestMethod.GET)

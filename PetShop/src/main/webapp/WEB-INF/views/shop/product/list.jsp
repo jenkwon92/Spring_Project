@@ -4,9 +4,13 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
-	List<Product> productList  = (List)request.getAttribute("productList");
+	/* List<Product> productList  = (List)request.getAttribute("productList");
 	Pager pager = new Pager();
-	pager.init(request,productList);
+	pager.init(request,productList); 
+	*/
+	
+	Pager pager = (Pager)request.getAttribute("pager");
+	List<Product> productList = pager.getList();
 %>
 <!DOCTYPE html>
 <html>
@@ -39,12 +43,10 @@
 								<div class="product__item__pic set-bg"
 									data-setbg="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>">
 									<ul class="product__hover">
-										<li><a href="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>"	class="image-popup">
-										<span class="arrow_expand">
-										</span>
-										</a>
-										</li>
-										<li><a href="/shop/cart/list"><span class="icon_bag_alt"></span></a></li>
+										<form id="cart_from">
+											<li><a href="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>"	class="image-popup"><span class="arrow_expand"></span></a></li>
+											<li><a href="/shop/cart/list"><span class="icon_bag_alt" onClick="addCart()"></span></a></li>										
+										</form>
 										
 									</ul>
 								</div>

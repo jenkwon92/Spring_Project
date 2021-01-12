@@ -2,6 +2,8 @@ package com.koreait.petshop.controller.product;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.koreait.petshop.model.common.Pager;
 import com.koreait.petshop.model.domain.Product;
 import com.koreait.petshop.model.domain.SubCategory;
 import com.koreait.petshop.model.product.service.ProductService;
@@ -31,19 +34,21 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private Pager pager;
+	
 
 	//목록 폼
 	//등록된 상품목록 리스트
 	//@GetMapping("/admin/product/list")
 	@RequestMapping(value="/admin/product/list", method=RequestMethod.GET )
-	public ModelAndView getProductList() {
+	public ModelAndView getProductList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/product/product_list");
 		
 		List productList = productService.selectAll();	
-		mav.addObject("productList", productList);
+		pager.init(request, productList);
+		mav.addObject("pager",pager);
 	
-		logger.debug("productList.size()"+productList.size());
-
 	
 		return mav;
 	}
@@ -86,13 +91,15 @@ public class ProductController {
 		 * **************************************/
 		//상품 목록 보여주기
 		@RequestMapping(value="/shop/product/list", method=RequestMethod.GET)
-		public ModelAndView getShopProductList(int subcategory_id) {
+		public ModelAndView getShopProductList(int subcategory_id,HttpServletRequest request) {
 			List topList = topCategoryService.selectAll();//상품 카테고리 가져오기
 			List productList = productService.selectById(subcategory_id);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("topList", topList);
-			mav.addObject("productList", productList);
+			//mav.addObject("productList", productList);
+			pager.init(request, productList);
+			mav.addObject("pager",pager);
 			mav.setViewName("shop/product/list");
 			
 			logger.debug("product.size() "+productList.size());

@@ -43,8 +43,6 @@ public class RestPaymentController {
 			  throw new LoginRequiredException("로그인이 필요한 서비스 입니다"); 
 			  
 		  }
-		 
-		
 		Member member =(Member)session.getAttribute("member");
 		logger.debug("상품"+cart.getProduct_id());
 		logger.debug("수량"+cart.getQuantity());

@@ -23,7 +23,26 @@
  $('input[name="psize"]').val();
  
 //비동기로 장바구니에 담기
+function addCart(){
+	var fromData = $("#cartForm").serialize();//파라미터를 전송할 수 있는 상태의 문자열로 나열해줌
+	$.ajax({
+		url:"/async/shop/cart/regist",
+		type:"post",
+		data:fromData,
+		success:function(responseData){
+			
+			if(responseData.resultCode==1){
+				if(confirm(responseData.msg+"\n장바구니로 이동하시겠습니까?")){
+					location.href=responseData.url;	
+				}
+			}else{
+				alert(responseData.msg);
+			}
+		}
+		
+	});
 
+}
 
 </script>
 </head>
@@ -35,7 +54,7 @@
 	    <!-- Product Details Section Begin -->
 	   <%--  <input type="hidden" name="product_id" value="<%=product.getProduct_id()%>"> --%>
     <section class="product-details spad">
-        <div class="container" id="cart_form">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product__details__pic">
@@ -76,7 +95,10 @@
                                     <input type="text" value="1">
                                 </div>
                             </div>
-                            <a href="/shop/cart/list" class="cart-btn"><span class="icon_bag_alt" onClick="addCart()"></span> Add to cart</a>
+                            <form id="cartForm">
+                            	<input type="hidden" name="product_id" value="<%=product.getProduct_id() %>"> 
+	                            <a href="/shop/cart/list" class="cart-btn"><span class="icon_bag_alt" onClick="addCart()"></span> Add to cart</a>
+                            </form>
                           
                         </div>
                         <div class="product__details__widget">
