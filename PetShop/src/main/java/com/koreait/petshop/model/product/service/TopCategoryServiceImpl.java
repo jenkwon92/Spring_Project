@@ -20,7 +20,7 @@ public class TopCategoryServiceImpl implements TopCategoryService{
 	}
 
 	public TopCategory select(int topcategory_id) {
-		return null;
+		return topCategoryDAO.select(topcategory_id);
 	}
 
 	public void insert(TopCategory topcategory) {

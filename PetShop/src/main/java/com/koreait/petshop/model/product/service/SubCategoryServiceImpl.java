@@ -23,13 +23,12 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	@Override
 	public List selectAllById(int topcategory_id) {
 		
-		return subCategoryDAO.selectById(topcategory_id);
+		return subCategoryDAO.selectAllById(topcategory_id);
 	}
 
 	@Override
 	public SubCategory select(int subcategory_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return subCategoryDAO.select(subcategory_id);
 	}
 
 	@Override

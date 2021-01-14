@@ -52,7 +52,7 @@
                             </li>
                             <li><a href="#">회원</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">목록</a></li>
+                                    <li><a href=/admin/member/list>목록</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">결제</a>
@@ -62,7 +62,7 @@
                             </li>
                             
                             <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="/admin/contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

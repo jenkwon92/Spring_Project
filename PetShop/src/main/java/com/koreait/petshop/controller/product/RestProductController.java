@@ -20,7 +20,6 @@ import com.koreait.petshop.model.product.service.ProductService;
 import com.koreait.petshop.model.product.service.SubCategoryService;
 import com.koreait.petshop.model.product.service.TopCategoryService;
 
-
 @Controller
 @RequestMapping("/async")
 public class RestProductController implements ServletContextAware{
@@ -47,24 +46,21 @@ public class RestProductController implements ServletContextAware{
 		fileManager.setSaveAddonDir(servletContext.getRealPath(fileManager.getSaveAddonDir()));
 		
 		logger.debug("저장 경로 "+this.servletContext.getRealPath(fileManager.getSaveBasicDir()));
-		logger.debug("addon저장 경로 "+this.servletContext.getRealPath(fileManager.getSaveAddonDir()));
 		logger.debug(fileManager.getSaveBasicDir());
-		logger.debug(fileManager.getSaveAddonDir());
-
 	}
 	
 	//등록
 	@RequestMapping(value="/admin/product/regist", method=RequestMethod.POST)
 	@ResponseBody
 	public MessageData getProductRegist(Product product) {
-		logger.debug("하위카테고리 "+product.getSubCategory().getSubcategory_id());
+		logger.debug("하위카테고리 "+product.getSubcategory_id());
 		logger.debug("상품명 "+product.getProduct_name());
 		logger.debug("가격 "+product.getPrice());
 		logger.debug("상세내용 "+product.getDetail());
 		
-
 		
-		for(Color color : product.getColor() ) {
+		
+		for(Color color : product.getColors() ) {
 			logger.debug("색상  "+color.getPicker());
 		}
 		for(Psize psize : product.getPsize() ) {

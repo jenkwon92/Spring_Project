@@ -13,17 +13,17 @@
             <li><a href="#"><span class="icon_heart_alt"></span>
                 <div class="tip">2</div>
             </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
+            <li><a href="/shop/cart/list"><span class="icon_bag_alt"></span>
                 <div class="tip">2</div>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="/resources/img/logo.png" alt=""></a>
+            <a href="/"><img src="/resources/img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+            <a href="/shop/member/loginForm">Login</a>
+            <a href="/shop/member/registForm">Register</a>
           
         </div>
     </div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="/resources/img/logo.png" alt=""></a>
+                        <a href="/"><img src="/resources/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
@@ -75,25 +75,30 @@
                                     <li><a href="/shop/product/list?subcategory_id=16">철망</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/">Shop</a></li>
-                            <li><a href="/">Pages</a>
-                                <ul class="dropdown">
+                            <!-- <li><a href="/">Shop</a></li> -->
+                            <li><a href="/shop/cart/list">Cart</a>
+                               <!--  <ul class="dropdown">
                                     <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                     <li><a href="/shop/cart/list">Cart</a></li>
                                     <li><a href="./checkout.html">Checkout</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="/shop/member/loginForm">Login</a>
-                            <a href="/shop/member/registForm">Register</a>
+                            <%if(session.getAttribute("member")==null){ %>
+            					<a href="/shop/member/loginForm">Login</a>
+                            	<a href="/shop/member/registForm">Register</a>
+            				<%}else{ %>
+            					<a href="/shop/member/logout">LogOut</a>
+            					<a href="/shop/member/mypage_order">MyPage</a>
+        					<%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>

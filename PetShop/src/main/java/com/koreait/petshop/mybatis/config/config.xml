@@ -12,8 +12,15 @@
 		<typeAlias type="com.koreait.petshop.model.domain.Psize" 				alias="Psize"/>	
 		<typeAlias type="com.koreait.petshop.model.domain.Member" 			alias="Member" />
 		<typeAlias type="com.koreait.petshop.model.domain.Cart" 					alias="Cart" />
-			
+		<typeAlias type="com.koreait.petshop.model.domain.Review" 			alias="Review" />
+		<typeAlias type="com.koreait.petshop.model.domain.Score"				 alias="Score"/>
+		<typeAlias type="com.koreait.petshop.model.domain.OrderState" 		alias="OrderState"/>
+		<typeAlias type="com.koreait.petshop.model.domain.Paymethod" 		alias="Paymethod"/>
+		<typeAlias type="com.koreait.petshop.model.domain.OrderSummary" alias="OrderSummary"/>
+		<typeAlias type="com.koreait.petshop.model.domain.OrderDetail" 		alias="OrderDetail"/>
+		<typeAlias type="com.koreait.petshop.model.domain.Receiver" 			alias="Receiver"/>
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/TopCategoryMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/SubCategoryMapper.xml"/>
@@ -23,6 +30,13 @@
 		<mapper resource="com/koreait/petshop/mybatis/mapper/PsizeMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/MemberMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/CartMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/ReviewMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/ScoreMapper.xml"/>
+			<mapper resource="com/koreait/petshop/mybatis/mapper/OrderStateMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/PaymethodMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/OrderSummaryMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/OrderDetailMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/ReceiverMapper.xml"/>
 		
 		</mappers>
 	

@@ -10,4 +10,5 @@ public class Receiver {
 	private String receiver_addr;
 	private String receiver_phone;
 
+
 }

@@ -1,11 +1,11 @@
-<%@page import="com.koreait.petshop.model.domain.Cart"%>
-<%@page import="com.koreait.petshop.model.common.Formatter"%>
+<%@page import="com.koreait.petshop.model.domain.Member"%>
 <%@page import="com.koreait.petshop.model.common.Formatter"%>
 <%@page import="com.koreait.petshop.model.domain.Cart"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
-   List<Cart> cartList = (List)request.getAttribute("cartList");
+	List<Cart> cartList = (List)request.getAttribute("cartList");
+	Member member = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
 <html>
@@ -16,21 +16,21 @@
 <script>
 //장바구니 비우기
 function delCart(){
-   if(confirm("장바구니를 모두 비우시겠습니까?")){
-      location.href="/shop/cart/del";
-   }   
+	if(confirm("장바구니를 모두 비우시겠습니까?")){
+		location.href="/shop/cart/del";
+	}	
 }
 //수량변경
-   function editCart(){
-      if(confirm("주문 수량을 변경하시겠어요?")){
-         $("#cart-form").attr({
-            action:"/shop/cart/edit",
-            method:"post"
-         });
-         $("#cart-form").submit();
-      }   
-      
-   }
+	function editCart(){
+		if(confirm("주문 수량을 변경하시겠어요?")){
+			$("#cart-form").attr({
+				action:"/shop/cart/edit",
+				method:"post"
+			});
+			$("#cart-form").submit();
+		}	
+		
+	}
 </script>
 </head>
 <body>
@@ -70,7 +70,7 @@ function delCart(){
                             </thead>
                             
                             <tbody>
-                               <%int sum=0; //합계 %>
+                            	<%int sum=0; //합계 %>
                                  <%for(Cart cart : cartList){ %>
                                 <tr>
                                     <td class="cart__product__item">
@@ -95,7 +95,7 @@ function delCart(){
                                         </div>
                                     </td>
                                         <%
-                                           sum = sum + (cart.getPrice()*cart.getQuantity());
+                                        	sum = sum + (cart.getPrice()*cart.getQuantity());
                                         %>
                                     <td class="cart__total"><%=Formatter.getCurrency(cart.getPrice()*cart.getQuantity()) %></td>
                                     <td class="cart__close"><span class="icon_close"><a href="/shop/cart/delete.do?cart_id=<%=cart.getCart_id() %>>"></a></span></td>
@@ -157,8 +157,8 @@ function delCart(){
     <!-- Search End -->
 
     <!-- Js Plugins -->
-   <%@ include file="../shopFooter.jsp"%>
-   <%@ include file="./../../inc/footer.jsp"%>
+	<%@ include file="../shopFooter.jsp"%>
+	<%@ include file="./../../inc/footer.jsp"%>
 </body>
 
 </html>
