@@ -54,7 +54,7 @@ th, td {
 function addCart(){
 	var fromData = $("#cartForm").serialize();//파라미터를 전송할 수 있는 상태의 문자열로 나열해줌
 	$.ajax({
-		url:"/shop/cart/regist",
+		url:"/async/shop/cart/regist",
 		type:"post",
 		data:fromData,
 		success:function(responseData){

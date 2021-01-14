@@ -3,6 +3,7 @@ package com.koreait.petshop.controller.payment;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +31,8 @@ import com.koreait.petshop.model.domain.Receiver;
 import com.koreait.petshop.model.payment.service.PaymentService;
 import com.koreait.petshop.model.product.service.TopCategoryService;
 
+import sun.print.resources.serviceui;
+
 @Controller
 public class PaymentController {
 	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
@@ -41,15 +46,11 @@ public class PaymentController {
 	 //카트 요청
 
 	  @RequestMapping(value="/shop/cart/list", method=RequestMethod.GET ) 
-	  public ModelAndView cart(int member_id,HttpServletRequest request) { 
-		  HttpSession session = request.getSession(); 
-		  Member member = (Member)session.getAttribute("member");
+	  public ModelAndView cart() { 
 		  ModelAndView mav = new ModelAndView(); 
-		  List cartList = paymentService.selectCartList(member.getMember_id());
+		  List cartList = paymentService.selectCartList();
 		  logger.debug("casrtlist is "+cartList);
-		  mav.addObject("cartList", cartList);
-		  mav.addObject("member", member);
-		  mav.setViewName("shop/cart/cart_list");
+		  mav.addObject("cartList", cartList); mav.setViewName("shop/cart/cart_list");
 		  return mav; 
 		  }
 	

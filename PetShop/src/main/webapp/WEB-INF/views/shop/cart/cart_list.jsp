@@ -1,11 +1,9 @@
-<%@page import="com.koreait.petshop.model.domain.Member"%>
 <%@page import="com.koreait.petshop.model.common.Formatter"%>
 <%@page import="com.koreait.petshop.model.domain.Cart"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
 	List<Cart> cartList = (List)request.getAttribute("cartList");
-	Member member = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
 <html>
