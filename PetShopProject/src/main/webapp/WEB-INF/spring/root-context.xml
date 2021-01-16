@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<jee:jndi-lookup 
+		id="dataSource" 
+		jndi-name="jdbc/oracle"
+		resource-ref="true"/>
+	
+	 <!--dataSource는 oracle인지 mysql인지 구분하기 위해서  -->
+	<bean id="dataSourceTransactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"/>
+		
+	<!-- Spring JDBC사용시  -->
+<!-- 	<bean id="jdbcTemplate" 
+		class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"/>	
+	 -->
+	
+	<!-- Mybatis Spring -->
+	<!--configLocation:  mybatis의 config파일 위치  -->
+		<bean id="sqlSessionFactoryBean" 
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:configLocation="classpath:com/koreait/petshop/mybatis/config/config.xml"/>
+		
+
+	
+	<!-- sqlsessiontemplate등록시 생성자constructor=arg필요>> 팩토리빈 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>	
+	
+	
+	<context:component-scan base-package="com.koreait.petshop.model"><!-- FileManager올리기 위해 모두 구해오기 -->
+		<!-- Controller제외하고 -->
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+		
+</beans>
