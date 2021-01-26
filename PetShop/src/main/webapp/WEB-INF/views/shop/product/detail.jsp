@@ -176,9 +176,7 @@ function addCart(){
 									    <th>date</th>
 									  </tr>
 									  <%for(int i = 0; i<reviewList.size();i++){ %>
-									  <%Review review= reviewList.get(i) ; 
-									  	
-									  	%>
+									  <%Review review= reviewList.get(i) ; 	%>
 									  <tr>
 									  	<td><%=num-- %></td>
 									    <td><a href="/shop/cs/detail?review_id=<%=review.getReview_id()%>"><%=member.getUser_id()%></td>
@@ -189,25 +187,27 @@ function addCart(){
 									<td colspan="6">				
 										<button class="btn success" onClick="location.href='/shop/cs/registForm?product_id=<%=product.getProduct_id()%>';">Regist</button>	
 									</td>
-									<tr>
-										<td colspan="6" style="text-align:center">
-										<%if((pager.getFirstPage()-1)>=1){ %>
-											<a href = "/shop/product/detail?currentPage=<%=pager.getFirstPage()-1%>">◀</a>
-										<%}else{ %>
-											<a href ="javascript:alert('처음 페이지입니다.')">◀</a>
-										<%} %>
-										<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
-											<%if(i>pager.getTotalPage())break; %>
-											<a href ="/shop/product/detail?product_id=<%=product.getProduct_id() %>?currentPage=<%=i%>" <% if(pager.getCurrentPage()==i){%>class="pageNum"<%} %>>[<%=i %>]</a>
-										<%} %>
-										<%if((pager.getLastPage()+1)<pager.getTotalPage()){ %>
-											<a href = "/shop/product/detail?product_id=<%=product.getProduct_id() %>?currentPage=<%=pager.getFirstPage()-1%>">▶</a>
-										<%}else{ %>	
-											<a href ="javascript:alert('마지막 페이지입니다.')">▶</a>
-										<%} %>
-										</td>
-									</tr>
 								</table>
+									<div>
+										<tr>
+											<td colspan="6" style="text-align:center">
+											<%if((pager.getFirstPage()-1)>=1){ %>
+												<a href = "/shop/product/detail.jsp?currentPage=<%=pager.getFirstPage()-1%>">◀</a>
+											<%}else{ %>
+												<a href ="javascript:alert('처음 페이지입니다.')">◀</a>
+											<%} %>
+											<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
+												<%if(i>pager.getTotalPage())break; %>
+												<a href ="/shop/product/detail.jsp?currentPage=<%=i%>">[<%=i %>]</a>
+											<%} %>
+											<%if((pager.getLastPage()+1)<pager.getTotalPage()){ %>
+												<a href = "/shop/product/detail.jsp?currentPage=<%=pager.getFirstPage()+1%>">▶</a>
+											<%}else{ %>	
+												<a href ="javascript:alert('마지막 페이지입니다.')">▶</a>
+											<%} %>
+											</td>
+										</tr>
+									</div>
                         </ul>
                    
                     </div>

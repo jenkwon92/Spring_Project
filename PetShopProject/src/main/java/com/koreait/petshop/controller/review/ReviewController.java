@@ -88,22 +88,20 @@ public class ReviewController {
 	
 	//삭제하기
 	@GetMapping("/shop/cs/del")
-	public ModelAndView reviewDel(int review_id, int product_id, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Member member = (Member)session.getAttribute("member");
+	public ModelAndView reviewDel(int review_id, Product product,HttpServletRequest request) {
+		
 		reviewService.delete(review_id);
-		logger.debug("product_id는"+product_id);
-		ModelAndView mav = new ModelAndView("redirect:shop/product/detail?product_id="+product_id+"");
-		mav.addObject("member", member);
+		ModelAndView mav = new ModelAndView("redirect:shop/product/detail?product_id="+product.getProduct_id()+"");
+		
 		return mav;
 	}
 	
 	//수정하기
 	@PostMapping("/shop/cs/edit")
-	public ModelAndView reviewDel(Review review, int product_id) {
+	public ModelAndView reviewDel(Review review, Product product) {
 		reviewService.update(review);
-		logger.debug("product_id::"+product_id);
-		ModelAndView mav = new ModelAndView("redirect:/shop/product/detail?product_id="+product_id+"");
+
+		ModelAndView mav = new ModelAndView("redirect:/shop/product/detail?product_id="+product.getProduct_id()+"");
 		return mav;
 	}
 	
